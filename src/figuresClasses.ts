@@ -28,12 +28,14 @@ export class Triangle implements Figure {
       this.b >= this.a + this.c ||
       this.c >= this.a + this.b
     ) {
-      throw new Error('your error message');
+      throw new Error(
+        `Triangle side lengths must be positive and satisfy the triangle inequality.`,
+      );
     }
   }
 
   getArea(): number {
-    return Math.round(areaByHeronsFormula(this.a, this.b, this.c) * 100) / 100;
+    return Math.floor(areaByHeronsFormula(this.a, this.b, this.c) * 100) / 100;
   }
 }
 
@@ -45,7 +47,7 @@ export class Circle implements Figure {
     public radius: number,
   ) {
     if (this.radius <= 0) {
-      throw new Error('your error message');
+      throw new Error('Circle radius must be a positive number.');
     }
   }
 
@@ -63,7 +65,7 @@ export class Rectangle implements Figure {
     public height: number,
   ) {
     if (Math.min(this.width, this.height) <= 0) {
-      throw new Error('your error message');
+      throw new Error('Rectangle width and height must be positive numbers.');
     }
   }
 
@@ -75,3 +77,5 @@ export class Rectangle implements Figure {
 export function getInfo(figure: Figure): string {
   return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
 }
+
+// getInfo(greenCircle) === 'A green circle - 3.14';
