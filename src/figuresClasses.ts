@@ -70,12 +70,10 @@ export class Rectangle implements Figure {
   }
 
   getArea(): number {
-    return Math.round(this.width * this.height * 100) / 100;
+    return Math.floor(this.width * this.height * 100) / 100;
   }
 }
 
 export function getInfo(figure: Figure): string {
   return `A ${figure.color} ${figure.shape} - ${figure.getArea()}`;
 }
-
-// getInfo(greenCircle) === 'A green circle - 3.14';
